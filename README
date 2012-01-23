@@ -1,2 +1,20 @@
-Petter testing this repo
-This is the second line
+repo for storing QA binaries
+
+when updating binary to new version, use update scritp in repo
+
+procedure:
+1) copy new binary file to /bin/ folder
+2) in terminal run update script old and new file names as parameters (filename must include extension)
+update oldFielName newFileName
+
+eg:
+update selenium-server-standalone-2.16.0.jar selenium-server-standalone-2.170.jar
+
+
+rest is done by the script:
+ - adding new file to repo
+ - writing proper commit
+ - removing old file from repo, history, etc (history, branches, tags are rewritten both locally and on github)
+ - reclaiming space
+ - push to github
+
