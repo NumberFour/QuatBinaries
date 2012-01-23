@@ -1,0 +1,21 @@
+
+if [ $# -ne 2 ]
+then
+	echo "provide file to be removed as first parameter"
+	echo "provide file to be added as second parameter"
+fi
+echo "removing: " $1
+echo "adding: " $2
+git status
+git add -A
+git commit -a -m "updating $1 => $1"
+git status
+git filter-branch --index-filter "git rm --cached --ignore-unmatch /*$1" --prune-empty -- --all 
+git push origin master --force 
+rm -rf .git/refs/original/ 
+git reflog expire --expire=now --all 
+git gc --prune=now 
+git gc --aggressive --prune=now 
+git status
+git pull
+
